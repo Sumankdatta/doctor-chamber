@@ -67,7 +67,7 @@ const BookingModal = ({ booked, selectedDate, setBooked, refetch }) => {
                             <input type="text" value={date} disabled className="input mt-2 input-bordered w-full " />
                             <select name='slot' className="select select-bordered w-full mt-2">
                                 {
-                                    slots?.map(slot => <option value={slot}>{slot}</option>)
+                                    slots?.map((slot, i) => <option value={slot} key={i}>{slot}</option>)
                                 }
                             </select>
                             <input type="text" name='name' defaultValue={user?.displayName} disabled placeholder="Your Name" className="input mt-2 input-bordered w-full " />
@@ -78,28 +78,6 @@ const BookingModal = ({ booked, selectedDate, setBooked, refetch }) => {
                     </form>
                 </div>
             </div>
-
-
-
-            {/* <dialog id="bookingModal" className="modal">
-                <form onSubmit={handleBooking} method="dialog" className="modal-box">
-                    <button htmlFor="bookingModal" className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-
-                    <div className='mt-6'>
-                        <h3 className="font-bold text-lg">{name}</h3>
-                        <input type="text" value={date} disabled className="input mt-2 input-bordered w-full " />
-                        <select name='slot' className="select select-bordered w-full mt-2">
-                            {
-                                slots?.map(slot => <option value={slot}>{slot}</option>)
-                            }
-                        </select>
-                        <input type="text" name='name' defaultValue={user?.displayName} disabled placeholder="Your Name" className="input mt-2 input-bordered w-full " />
-                        <input type="email" name='email' defaultValue={user?.email} disabled placeholder="your email" className="input mt-2 input-bordered w-full " />
-                        <input type="phone" name='phone' placeholder="Your Phone Number" className="input mt-2 input-bordered w-full " /><br />
-                        <input type="submit" value="submit" className="btn btn-neutral mt-4 input-bordered w-full " />
-                    </div>
-                </form>
-            </dialog> */}
 
         </div>
     );

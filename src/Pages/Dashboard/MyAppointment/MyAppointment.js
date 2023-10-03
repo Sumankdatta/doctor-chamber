@@ -8,9 +8,10 @@ const MyAppointment = () => {
     const { user, logOut } = useContext(AuthContext);
     const navigate = useNavigate()
 
-    const { data: bookings = [], loading, refetch } = useQuery({
+    const { data: bookings = [], isLoading, refetch } = useQuery({
         queryKey: ['bookings', user?.email],
         queryFn: () =>
+
             fetch(`http://localhost:5000/booking?email=${user?.email}`, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('doc-accessToken')}`
@@ -41,7 +42,9 @@ const MyAppointment = () => {
                 }
             })
     }
-
+    if (isLoading) {
+        return <p>Loading......</p>
+    }
     return (
         <div>
             <h2 className='text-2xl'>My Appointment</h2>
